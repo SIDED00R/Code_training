@@ -14,6 +14,8 @@ def solution(files):
                     number += alp
             elif len(tail) == 0:
                 if alp.isnumeric():
+                    if len(number) > 5:
+                        break
                     number += alp
                 else:
                     break
