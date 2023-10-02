@@ -1,18 +1,14 @@
-from collections import deque
-
 def solution(prices):
-    prices = deque(prices)
     answer = [0 for _ in range(len(prices))]
-    stack = [[prices.popleft(), 0]]
-    idx = 0
-    for i in range(len(prices) - 1):
-        price = prices.popleft()
-        idx += 1
+    stack = []
+    
+    for i in range(len(prices)):
+        price = prices[i]
         
         while stack and price < stack[-1][0]:
-            p, i = stack.pop()
-            answer[i] = idx - i
-        stack.append([price, idx])
+            p, idx = stack.pop()
+            answer[idx] = i - idx
+        stack.append([price, i])
         
     while stack:
         p, i = stack.pop()
