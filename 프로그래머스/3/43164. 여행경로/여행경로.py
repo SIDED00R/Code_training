@@ -18,7 +18,6 @@ def find(dic, start, count, N, answer, route):
         find(dic, now, count + 1, N, answer, route)
         route.pop()
         dic[start] = front + [now] + back
-    return
 
 def solution(tickets):
     dic = {}
