@@ -1,5 +1,3 @@
-
-
 def find(dic, start, count, N, answer, route):
     if N == count:
         answer.append(route[:])
