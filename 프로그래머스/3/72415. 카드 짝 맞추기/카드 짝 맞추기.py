@@ -41,11 +41,7 @@ def check(board, dic, now_i, now_j, case, count):
     new_board[dic[first_num][0][0]][dic[first_num][0][1]] = 0
     new_board[dic[first_num][1][0]][dic[first_num][1][1]] = 0
     
-    if case1 >= case2:
-        return check(new_board, dic, dic[first_num][0][0], dic[first_num][0][1], case[1:], count + case2 + 2)
-    else:
-        return check(new_board, dic, dic[first_num][1][0], dic[first_num][1][1], case[1:], count + case1 + 2)
-
+    return min(check(new_board, dic, dic[first_num][0][0], dic[first_num][0][1], case[1:], count + case2 + 2), check(new_board, dic, dic[first_num][1][0], dic[first_num][1][1], case[1:], count + case1 + 2))
 
 def solution(board, r, c):
     dic = defaultdict(list)
