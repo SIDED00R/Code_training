@@ -7,22 +7,21 @@ for _ in range(R):
 max_length = 0
 di = [0, 0, 1, -1]
 dj = [1, -1, 0, 0]
-visited = [False] * 26
-visited[ord(board[0][0]) - 65] = True
 
-def dfs(i, j, visited, count):
-    global max_length
-    max_length = max(max_length, count)
+stack = set()
+stack.add((0, 0, board[0][0]))
+while stack:
+    i, j, now = stack.pop()
+    max_length = max(max_length, len(now))
+    if max_length == 26:
+        print(26)
+        exit()
     for idx in range(4):
-       next_i = di[idx] + i
-       next_j = dj[idx] + j
-       if 0 <= next_i < R and 0 <= next_j < C:
-           next_node = board[next_i][next_j]
-           if visited[ord(next_node) - 65] == False:
-               visited[ord(next_node) - 65] = True
-               dfs(next_i, next_j, visited, count + 1)
-               visited[ord(next_node) - 65] = False
-
-dfs(0, 0, visited, 1)
+        next_i = i + di[idx]
+        next_j = j + dj[idx]
+        if 0 <= next_i < R and 0 <= next_j < C:
+            if board[next_i][next_j] not in set(now):
+                next_node = board[next_i][next_j]
+                stack.add((next_i, next_j, now + next_node))
 
 print(max_length)
