@@ -1,0 +1,5 @@
+n = int(input())
+base = sum(range(1,n + 1))
+print(base)
+print(base ** 2)
+print(base ** 2)
