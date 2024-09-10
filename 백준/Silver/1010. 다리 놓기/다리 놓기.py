@@ -1,7 +1,5 @@
-
-from math import comb
-
-T = int(input())
-for _ in range(T):
-    n, m = map(int, input().split())
-    print(comb(m, n))
+import math
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    print(math.comb(k, n))
