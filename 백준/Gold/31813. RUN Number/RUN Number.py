@@ -9,8 +9,8 @@ for _ in range(t):
         count += 1
         now_num = int(str_num[0] * n)
         if k < now_num:
-            if str_num[0] == 1:
-                now_num = ("9" * (n - 1))
+            if str_num[0] == '1':
+                now_num = int("9" * (n - 1))
             else:
                 now_num = int(str(int(str_num[0]) - 1) * n)
         k -= now_num
