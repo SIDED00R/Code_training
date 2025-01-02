@@ -4,7 +4,7 @@ def start_first(n, k):
     if n % 2 == 0:
         return 2 * start_first(n // 2, k - n // 2)
     else:
-        return 2 * start_second(n // 2, k - n // 2)
+        return 2 * start_second(n // 2, k - (n + 1) // 2)
 
 def start_second(n, k):
     if n // 2 >= k:
