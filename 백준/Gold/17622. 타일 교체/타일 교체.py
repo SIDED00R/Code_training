@@ -9,7 +9,7 @@ def find_road(now_i, now_j, now_dir, m, n):
         now_block = m[now_i][now_j]
         next_dir = dic[now_dir][now_block]
         if next_dir == "":
-            return -1
+            return 1e9
         next_i = now_i + move[next_dir][0]
         next_j = now_j + move[next_dir][1]
         if next_i == n - 1 and next_j == n:
@@ -19,7 +19,7 @@ def find_road(now_i, now_j, now_dir, m, n):
             now_j = next_j
             now_dir = next_dir
         else:
-            return -1
+            return 1e9
 
 
 n, k = map(int, input().split())
@@ -28,22 +28,21 @@ for _ in range(n):
     line = list(map(int, input().split()))
     matrix.append(line)
 
+
+answer = 1e9
 if k == 0:
     answer = find_road(0, 0, "R", matrix, n)
 else:
-    answer = n ** 2 + 100
     for i in range(n):
         for j in range(n):
             for num in range(6):
                 copy_matrix = copy.deepcopy(matrix)
-                if copy_matrix[i][j] == num:
-                    continue
-                else:
+                if matrix[i][j] != num:
                     copy_matrix[i][j] = num
                     now_count = find_road(0, 0, "R", copy_matrix, n)
-                    if now_count != -1:
-                        answer = min(answer, now_count)
-    if answer == n ** 2 + 100:
-        answer = -1
+                    answer = min(answer, now_count)
 
-print(answer)
+if answer == 1e9:
+    print(-1)
+else:
+    print(answer)
