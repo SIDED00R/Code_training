@@ -1,48 +1,60 @@
-import copy
+import sys
+from collections import deque
 
-def find_road(now_i, now_j, now_dir, m, n):
-    move = {"D":[1, 0], "U":[-1, 0], "R":[0, 1], "L":[0, -1]}
-    dic = {"D":["", "", "R", "L", "D", ""], "U":["R", "L", "", "", "U", ""], "L":["D", "", "U", "", "", "L"], "R":["", "D", "", "U", "", "R"]}
-    count = 0
-    while True:
-        count += 1
-        now_block = m[now_i][now_j]
-        next_dir = dic[now_dir][now_block]
-        if next_dir == "":
-            return 1e9
-        next_i = now_i + move[next_dir][0]
-        next_j = now_j + move[next_dir][1]
-        if next_i == n - 1 and next_j == n:
-            return count
-        elif 0 <= next_i < n and 0 <= next_j < n:
-            now_i = next_i
-            now_j = next_j
-            now_dir = next_dir
-        else:
-            return 1e9
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+p = [[-1, 1, -1, 3, -1, 0], [-1, -1, 0, 2, 1, -1],
+     [1, -1, 3, -1, -1, 2], [0, 2, -1, -1, 3, -1]]
 
 
-n, k = map(int, input().split())
-matrix = []
-for _ in range(n):
-    line = list(map(int, input().split()))
-    matrix.append(line)
+def bfs(road, N):
+    if p[0][road[0][0]] < 0:
+        return int(1e9)
+
+    result = int(1e9)
+    q = deque()
+    q.append((p[0][road[0][0]], 0, 0, 1))
+    visited = [[False for _ in range(N)] for _ in range(N)]
+    visited[0][0] = True
+
+    while q:
+        d, x, y, l = q.popleft()
+        if x == N-1 and y == N-1 and d == 0:
+            result = min(result, l)
+            continue
+        nx, ny = x+dx[d], y+dy[d]
+        if nx >= N or ny >= N or nx < 0 or ny < 0:
+            continue
+
+        nd = p[d][road[ny][nx]]
+        if nd >= 0:
+            if visited[ny][nx] == False:
+                visited[ny][nx] = True
+                q.append((nd, nx, ny, l+1))
+    return result
 
 
-answer = 1e9
-if k == 0:
-    answer = find_road(0, 0, "R", matrix, n)
+input = sys.stdin.readline
+N, K = map(int, input().split())
+road = []
+for _ in range(N):
+    road.append(list(map(int, input().split())))
+result = int(1e9)
+visited = [[False for _ in range(N)] for _ in range(N)]
+
+if K == 0:
+    result = bfs(road, N)
 else:
-    for i in range(n):
-        for j in range(n):
-            for num in range(6):
-                copy_matrix = copy.deepcopy(matrix)
-                if matrix[i][j] != num:
-                    copy_matrix[i][j] = num
-                    now_count = find_road(0, 0, "R", copy_matrix, n)
-                    answer = min(answer, now_count)
+    for i in range(N):
+        for j in range(N):
+            for t in range(6):
+                if road[i][j] != t:
+                    o = road[i][j]
+                    road[i][j] = t
+                    result = min(result, bfs(road, N))
+                    road[i][j] = o
 
-if answer == 1e9:
+if result == int(1e9):
     print(-1)
 else:
-    print(answer)
+    print(result)
