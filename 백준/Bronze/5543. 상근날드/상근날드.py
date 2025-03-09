@@ -1,0 +1,6 @@
+sd = int(input())
+jd = int(input())
+hd = int(input())
+c = int(input())
+s = int(input())
+print(min(sd, jd, hd) + min(c, s) - 50)
