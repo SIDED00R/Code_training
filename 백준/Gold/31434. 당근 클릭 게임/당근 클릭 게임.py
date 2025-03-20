@@ -9,10 +9,10 @@ for _ in range(n):
 
 carrot.sort()
 
-dp = [[-1 for _ in range(max_s * (n + 1) + 1)] for _ in range(k + 1)]
+dp = [[-1 for _ in range(5001)] for _ in range(k + 1)]
 dp[0][1] = 0
 for i in range(k):
-    for j in range(max_s * n + 1):
+    for j in range(5001):
         if dp[i][j] != -1:
             dp[i + 1][j] = max(dp[i + 1][j], dp[i][j] + j)
         else:
@@ -26,4 +26,3 @@ for i in range(k):
 
 
 print(max(dp[-1]))
-
