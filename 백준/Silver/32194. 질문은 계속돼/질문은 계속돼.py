@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 n = int(input())
 stack = [1, 1]
 total_sum = [1, 2]
