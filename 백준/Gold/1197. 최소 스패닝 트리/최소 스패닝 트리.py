@@ -1,34 +1,41 @@
-import sys
-input = sys.stdin.readline
 import heapq
+import sys
+sys.setrecursionlimit(100000)
 
-def find(node):
-    if parents_node[node] != node:
-        parents_node[node] = find(parents_node[node])
-    return parents_node[node]
-
-def union(first, second):
-    first_root = find(first)
-    second_root = find(second)
-    if first_root < second_root:
-        parents_node[second_root] = first_root
+def find(num):
+    if parent[num] != num:
+        parent[num] = find(parent[num])
+    return parent[num]
+        
+def union(a, b):
+    a_p = find(a)
+    b_p = find(b)
+    if a_p == b_p:
+        return False
     else:
-        parents_node[first_root] = second_root
+        if a_p < b_p:
+            parent[b_p] = a_p
+        else:
+            parent[a_p] = b_p
+        return True
 
-V, E = map(int, input().rstrip('\n').split())
-parents_node = [i for i in range(V + 1)]
-nodes = []
-for _ in range(E):
-    first, second, weight = map(int, input().rstrip('\n').split())
-    heapq.heappush(nodes, [weight, first, second])
 
-answer = 0    
+v, e = map(int, input().split())
+parent = [i for i in range(v + 1)]
+
+stack = []
+for _ in range(e):
+    a, b, c = map(int, input().split())
+    heapq.heappush(stack, [c, a, b])
+
+answer = 0
 count = 0
-while count < V - 1:
-    now_weight, now_start, now_end = heapq.heappop(nodes)
-    if find(now_start) != find(now_end):  
-        union(now_start, now_end)  
-        answer += now_weight
+while stack:
+    if count == v - 1:
+        break
+    c, a, b = heapq.heappop(stack)
+    if union(a, b):
+        answer += c
         count += 1
-               
+
 print(answer)
