@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 def find(l, base, go, back):
     total = sum([(num - base) * back for num in l])
     now_total = total
