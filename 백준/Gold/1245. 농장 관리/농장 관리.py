@@ -1,45 +1,53 @@
-from collections import deque
-
 n, m = map(int, input().split())
-matrix = [list(map(int, input().split())) for _ in range(n)]
+matrix = []
+for _ in range(n):
+    line = list(map(int, input().split()))
+    matrix.append(line)
 
-visited = [[0]*m for _ in range(n)]
+visited = [[0 for _ in range(m)] for _ in range(n)]
+
 di = [0, 1, 1, 1, 0, -1, -1, -1]
 dj = [1, 1, 0, -1, -1, -1, 0, 1]
-
 answer = 0
 
 for i in range(n):
     for j in range(m):
-        if visited[i][j]:
+        if visited[i][j] == 1:
+            continue
+        visited[i][j] = 1
+        stack = [[i, j]]
+        able_stack = [[i, j]]
+        
+        height = matrix[i][j]
+        if height == 0:
+            visited[i][j] = 1
             continue
 
-        h = matrix[i][j]
-        visited[i][j] = 1
-
-        comp = [(i, j)]
-        q = deque([(i, j)])
-
-        is_peak = True
-
-        while q:
-            ci, cj = q.popleft()
-            for k in range(8):
-                ni, nj = ci + di[k], cj + dj[k]
-                if not (0 <= ni < n and 0 <= nj < m):
-                    continue
-
-                nh = matrix[ni][nj]
-
-                if nh > h:
-                    is_peak = False
-
-                if not visited[ni][nj] and nh == h:
+        while stack:
+            now_i, now_j = stack.pop()
+            for idx in range(8):
+                ni = now_i + di[idx]
+                nj = now_j + dj[idx]
+                if 0 <= ni < n and 0 <= nj < m and visited[ni][nj] != 1 and matrix[ni][nj] == height:
                     visited[ni][nj] = 1
-                    q.append((ni, nj))
-                    comp.append((ni, nj))
+                    able_stack.append([ni, nj])
+                    stack.append([ni, nj])
 
-        if is_peak:
+        top = True
+        for now_node in able_stack:
+            now_i, now_j = now_node
+            for idx in range(8):
+                ni = now_i + di[idx]
+                nj = now_j + dj[idx]
+                if 0 <= ni < n and 0 <= nj < m:
+                    if height < matrix[ni][nj]:
+                        top = False
+                        break
+            if not top:
+                break
+        if top:
             answer += 1
 
 print(answer)
+
+            
