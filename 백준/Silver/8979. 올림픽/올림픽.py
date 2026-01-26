@@ -3,9 +3,9 @@ stack = []
 
 for _ in range(n):
     idx, g, s, b = map(int, input().split())
-    stack.append([g, s, b])
+    stack.append([-g, -s, -b])
     if idx == k:
-        answer = [g, s, b]
+        answer = [-g, -s, -b]
     
 stack.sort()
 find = False
