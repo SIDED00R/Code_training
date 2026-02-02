@@ -1,20 +1,14 @@
-def insert(trie: dict, path: list[str]) -> None:
-    node = trie
-    for name in path:
-        node = node.setdefault(name, {}) 
-
-def dfs_print(node: dict, depth: int) -> None:
+def dfs(node, before):
     for key in sorted(node.keys()):
-        print("--" * depth + key)
-        dfs_print(node[key], depth + 1)
+        print(f"{before}{key}")
+        dfs(node[key], before + "--")
 
-N = int(input().strip())
-trie: dict = {}
+n = int(input())
+dic = {}
+for _ in range(n):
+    line = list(input().split())
+    node = dic
+    for name in line[1:]:
+        node = node.setdefault(name, {})
 
-for _ in range(N):
-    parts = input().split()
-    k = int(parts[0])
-    foods = parts[1:1 + k]
-    insert(trie, foods)
-
-dfs_print(trie, 0)
+dfs(dic, "")
