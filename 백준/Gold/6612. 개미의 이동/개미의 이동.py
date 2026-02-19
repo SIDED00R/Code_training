@@ -41,17 +41,8 @@ while True:
             labels.pop()
         idx += 1
 
-    last = []
-    while idx < A and ants[idx][0] == T:
-        _, side = ants[idx]
-        if side == 0:
-            last.append(labels.popleft())
-        else:
-            last.append(labels.pop())
-        idx += 1
-
-    last.sort()
-    if len(last) == 1:
-        print(f"The last ant will fall down in {T} seconds - started at {last[0]}.")
+    labels = sorted(labels)
+    if len(labels) == 1:
+        print(f"The last ant will fall down in {T} seconds - started at {labels[0]}.")
     else:
-        print(f"The last ant will fall down in {T} seconds - started at {last[0]} and {last[1]}.")
+        print(f"The last ant will fall down in {T} seconds - started at {labels[0]} and {labels[1]}.")
