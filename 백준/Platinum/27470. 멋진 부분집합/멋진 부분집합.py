@@ -3,7 +3,7 @@ import sys
 import math
 input = sys.stdin.readline
 
-def prime_factors_distinct(x: int):
+def check(x):
     ret = []
     d = 2
     while d * d <= x:
@@ -17,36 +17,33 @@ def prime_factors_distinct(x: int):
     return ret
 
 n = int(input())
+target = math.ceil(n / 2)
+result = random.sample(range(0, n), min(40, n))
+
 line = list(map(int, input().split()))
-target = (n + 1) // 2
-
-tries = min(40, n)
-indices = random.sample(range(n), tries)
-
-checked = set()
-final_answer = None
-
-for idx in indices:
-    x = line[idx]
-    for p in prime_factors_distinct(x):
-        if p in checked:
-            continue
-        checked.add(p)
-
-        ans = []
-        for v in line:
-            if v % p == 0:
-                ans.append(v)
-                if len(ans) == target:
-                    final_answer = ans
-                    break
-        if final_answer is not None:
+find = False
+p_dic = {}
+for idx in result:
+    num = line[idx]
+    l = check(num)
+    for p in l:
+        if find:
             break
-    if final_answer is not None:
-        break
-
-if final_answer is not None:
+        if p in p_dic:
+            continue
+        else:
+            p_dic[p] = 0
+            answer = []
+            count = 0
+            for now_num in line:
+                if now_num % p == 0:
+                    count += 1
+                    answer.append(now_num)
+                    if count == target:
+                        find = True
+                        break
+if find:
     print("YES")
-    print(*final_answer)
+    print(*answer)
 else:
     print("NO")
