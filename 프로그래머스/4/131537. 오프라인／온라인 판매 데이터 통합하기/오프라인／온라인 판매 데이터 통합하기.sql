@@ -1,0 +1,8 @@
+-- 코드를 입력하세요
+select date_format(sales_date, '%Y-%m-%d'), product_id, user_id, sales_amount 
+from (SELECT Sales_date, product_id, user_id, sales_amount from online_sale
+               union all
+               SELECT Sales_date, product_id, null as user_id, sales_amount from offline_sale) total
+where sales_date >= '2022-03-01' and sales_date < '2022-04-01'
+group by sales_date, product_id, user_id
+order by sales_date, product_id, user_id
