@@ -1,0 +1,11 @@
+x,y,w,h=map(int,input().split())
+g1=x
+g2=w-x
+s1=y
+s2=h-y
+sol=list()
+sol.append(g1)
+sol.append(g2)
+sol.append(s1)
+sol.append(s2)
+print(min(sol))
