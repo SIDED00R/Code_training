@@ -12,16 +12,16 @@
 
 ## 제출 일자
 
-2026년 4월 29일 22:18:13
+2026년 4월 29일 22:24:07
 
 ## 문제 설명
 
-베를란드의 수도에 있는 극장 광장은 n × m 미터의 직사각형 모양입니다. 도시의 기념일을 맞아 광장을 정사각형 화강암 타일로 포장하기로 결정했습니다. 각 타일의 크기는 a × a입니다. 광장을 포장하는 데 필요한 타일의 최소 개수는 얼마입니까? 극장 광장보다 큰 면적을 덮는 것은 허용되지만, 광장은 반드시 덮여야 합니다. 타일을 부수는 것은 허용되지 않습니다. 타일의 면은 광장의 면과 평행해야 합니다.
+Theatre Square in the capital city of Berland has a rectangular shape with the size  n  ×  m  meters. On the occasion of the city's anniversary, a decision was taken to pave the Square with square granite flagstones. Each flagstone is of the size  a  ×  a . What is the least number of flagstones needed to pave the Square? It's allowed to cover the surface larger than the Theatre Square, but the Square has to be covered. It's not allowed to break the flagstones. The sides of flagstones should be parallel to the sides of the Square.
 
 ## 입력
 
-입력의 첫 번째 줄에는 세 개의 양의 정수 n, m, a (1 ≤  n, m, a ≤ 10^9)가 포함되어 있습니다.
+The input contains three positive integer numbers in the first line:  n ,   m  and  a  ( 1 ≤   n ,  m ,  a  ≤ 10 9 ).
 
 ## 출력
 
-필요한 수의 깔개를 작성하세요.
+Write the needed number of flagstones.
