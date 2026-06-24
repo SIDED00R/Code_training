@@ -12,16 +12,16 @@
 
 ## 제출 일자
 
-2026년 6월 23일 20:53:55
+2026년 6월 24일 22:54:59
 
 ## 문제 설명
 
-문자열 $s$가 주어집니다. 당신의 임무는 주어진 문자열 $s$에 두 개의 겹치지 않는 부분 문자열 "AB"와 "BA"가 포함되어 있는지 확인하는 것입니다(부분 문자열은 어떤 순서로든 올 수 있습니다).
+You are given string  s . Your task is to determine if the given string  s  contains two non-overlapping substrings " AB " and " BA " (the substrings can go in any order).
 
 ## 입력
 
-입력의 유일한 줄은 대문자 라틴 문자로 구성된 길이 $1$과 $10^5$ 사이의 문자열 $s$를 포함합니다.
+The only line of input contains a string  s  of length between  1  and  10 5  consisting of uppercase Latin letters.
 
 ## 출력
 
-문자열 $s$가 두 개의 겹치지 않는 부분 문자열 "AB"와 "BA"를 포함하면 "YES" (따옴표 없이)를 출력하고, 그렇지 않으면 "NO"를 출력한다.
+Print " YES " (without the quotes), if string  s  contains two non-overlapping substrings " AB " and " BA ", and " NO " otherwise.
