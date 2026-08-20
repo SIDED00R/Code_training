@@ -12,25 +12,19 @@
 
 ## 제출 일자
 
-2026년 8월 19일 09:59:36
+2026년 8월 19일 00:59:32
 
 ## 문제 설명
 
-아스테릭스, 오벨릭스 그리고 이들의 임시 친구들인 서픽스와 프리픽스는 마침내 조화의 사원에 도착했습니다. 하지만 사원의 문은 굳게 닫혀 있었고, 오벨릭스조차 문을 여는 데 실패했습니다. 잠시 후 그들은 사원 문 아래의 바위에 새겨진 문자열 $s$를 발견했습니다. 아스테릭스는 그것이 사원을 여는 비밀번호일 것이라 추측하고 문자열을 소리 내어 읽었습니다. 하지만 아무 일도 일어나지 않았습니다.
-
-그때 아스테릭스는 비밀번호가 문자열 $s$의 어떤 부분 문자열 $t$일 것이라고 추측했습니다. 프리픽스는 부분 문자열 $t$가 문자열 $s$의 접두사여야 한다고 추측했고, 서픽스는 부분 문자열 $t$가 문자열 $s$의 접미사여야 한다고 추측했으며, 오벨릭스는 $t$가 문자열 $s$의 내부에 어딘가에 위치해야 한다고, 즉 $t$가 접두사도 아니고 접미사도 아니어야 한다고 추측했습니다.
-
-아스테릭스는 모든 동료들의 조건을 만족하도록 부분 문자열 $t$를 골랐습니다. 게다가 가능한 모든 후보 중에서 아스테릭스는 가장 긴 것을 골랐습니다 (아스테릭스는 긴 문자열을 좋아하기 때문입니다). 아스테릭스가 부분 문자열 $t$를 소리 내어 읽자 사원의 문이 열렸습니다.
-
-문자열 $s$가 주어질 때, 부분 문자열 $t$를 찾거나, 그러한 부분 문자열이 존재하지 않으며 위 이야기가 단지 멋진 전설에 불과함을 판별하세요.
+Asterix, Obelix and their temporary buddies Suffix and Prefix has finally found the Harmony temple. However, its doors were firmly locked and even Obelix had no luck opening them. A little later they found a string $s$, carved on a rock below the temple's gates. Asterix supposed that that's the password that opens the temple and read the string aloud. However, nothing happened. Then Asterix supposed that a password is some substring $t$ of the string $s$. Prefix supposed that the substring $t$ is the beginning of the string $s$; Suffix supposed that the substring $t$ should be the end of the string $s$; and Obelix supposed that $t$ should be located somewhere inside the string $s$, that is, $t$ is neither its beginning, nor its end. Asterix chose the substring $t$ so as to please all his companions. Besides, from all acceptable variants Asterix chose the longest one (as Asterix loves long strings). When Asterix read the substring $t$ aloud, the temple doors opened.  You know the string $s$. Find the substring $t$ or determine that such substring does not exist and all that's been written above is just a nice legend.
 
 ## 입력
 
-소문자 라틴 문자로 이루어진, 길이가 $1$에서 $10^{6}$ 사이 (양 끝포함)인 문자열 $s$가 주어집니다.
+You are given the string $s$ whose length can vary from $1$ to $10^{6}$ (inclusive), consisting of small Latin letters.
 
 ## 출력
 
-문자열 $t$를 출력합니다. 조건을 만족하는 문자열 $t$가 존재하지 않는다면, 따옴표를 제외하고 "Just a legend"를 출력합니다.
+Print the string $t$. If a suitable $t$ string does not exist, then print " Just a legend " without the quotes.
 
 ## 코드 리뷰
 
