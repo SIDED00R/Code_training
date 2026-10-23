@@ -12,36 +12,36 @@
 
 ## 제출 일자
 
-2026년 10월 24일 08:04:30
+2026년 10월 24일 08:04:18
 
 ## 문제 설명
 
-m x n 정수 matrix가 주어졌을 때, matrix에서 가장 긴 증가하는 경로의 길이를 반환하세요.
+Given an m x n integers matrix, return the length of the longest increasing path in matrix.
 
-각 셀에서는 왼쪽, 오른쪽, 위, 아래의 네 방향으로 이동할 수 있습니다. 대각선으로 이동하거나 경계 밖으로 이동할 수는 없습니다(즉, 랩어라운드는 허용되지 않습니다).
+From each cell, you can either move in four directions: left, right, up, or down. You may not move diagonally or move outside the boundary (i.e., wrap-around is not allowed).
 
  
 
-예시 1:
+Example 1:
 
 Input: matrix = [[9,9,4],[6,6,8],[2,1,1]]
 Output: 4
-Explanation: 가장 긴 증가하는 경로는 [1, 2, 6, 9]입니다.
+Explanation: The longest increasing path is [1, 2, 6, 9].
 
-예시 2:
+Example 2:
 
 Input: matrix = [[3,4,5],[3,2,6],[2,2,1]]
 Output: 4
-Explanation: 가장 긴 증가하는 경로는 [3, 4, 5, 6]입니다. 대각선 이동은 허용되지 않습니다.
+Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
 
-예시 3:
+Example 3:
 
 Input: matrix = [[1]]
 Output: 1
 
  
 
-제약 조건:
+Constraints:
 
 m == matrix.length
 
