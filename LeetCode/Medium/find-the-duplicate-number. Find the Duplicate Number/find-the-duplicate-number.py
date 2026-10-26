@@ -1,5 +1,3 @@
-from collections import Counter
-
 class Solution:
 	def findDuplicate(self, nums: list[int]) -> int:
 		slow = nums[0]
