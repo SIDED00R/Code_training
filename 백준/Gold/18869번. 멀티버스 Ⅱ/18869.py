@@ -1,21 +1,7 @@
+import sys
 from collections import Counter
 
-def make_fenwick(size):
-	tree = [0] * (size + 1)
-	
-	def update(i):
-		while i <= size:
-			tree[i] += 1
-			i += i & (-i)
-			
-	def query(i):
-		s = 0
-		while i > 0:
-			s += tree[i]
-			i -= i & (-i)
-		return s
-
-	return update, query
+input = sys.stdin.readline
 
 m, n = map(int, input().split())
 
@@ -28,17 +14,31 @@ for _ in range(m):
 	rank = {v: i + 1 for i, v in enumerate(sorted_unique)}
 	size = len(sorted_unique)
 
-	update, query = make_fenwick(size)
+	tree = [0] * (size + 1)
+	seen = [0] * (size + 1)
 
-	signature = []
-	for now_node in line:
-		x = rank[now_node]
-		less = query(x - 1)
-		total = query(x)
-		equal = total - less
-		signature.append(less)
-		signature.append(equal)
-		update(x)
+	signature = [0] * (2 * n)
+	idx = 0
+	for v in line:
+		x = rank[v]
+		less = 0
+		i = x - 1
+		while i > 0:
+			less += tree[i]
+			i -= i & (-i)
+
+		equal = seen[x]
+
+		signature[idx] = less
+		signature[idx + 1] = equal
+		idx += 2
+
+		seen[x] += 1
+
+		i = x
+		while i <= size:
+			tree[i] += 1
+			i += i & (-i)
 
 	sig_counter[tuple(signature)] += 1
 
